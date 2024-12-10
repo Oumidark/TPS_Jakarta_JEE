@@ -1,5 +1,4 @@
 package ma.emsi.essayh.oumaima.casablanca.tp_0_essayh_oumaima_14;
-
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.model.SelectItem;
@@ -172,7 +171,7 @@ public class Bb implements Serializable {
                 """;
         listeSystemRoles.add(new SelectItem(role, "Guide touristique"));
         // Présélectionne le premier rôle de la liste.
-                this.systemRole = (String) listeSystemRoles.getFirst().getValue();
+                this.systemRole = (String) listeSystemRoles.get(0).getValue();
         return listeSystemRoles;
     }
 }
