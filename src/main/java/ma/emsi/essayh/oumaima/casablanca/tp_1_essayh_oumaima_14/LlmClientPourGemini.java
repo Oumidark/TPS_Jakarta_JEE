@@ -29,14 +29,14 @@ public class LlmClientPourGemini implements Serializable {
     private final WebTarget target;
 
     public LlmClientPourGemini() {
-        //this.key = System.getenv("GEMINI_KEY");
+        this.key = System.getenv("GEMINI_KEY");
         // Récupère la clé secrète pour travailler avec l'API du LLM, mise dans une variable d'environnement
         // du système d'exploitation.
         // ECRIRE...
         // Client REST pour envoyer des requêtes vers les endpoints de l'API d'OpenAI
         this.clientRest = ClientBuilder.newClient();
         // Endpoint REST pour envoyer la question à l'API.
-        this.target = clientRest.target("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=");
+        this.target = clientRest.target("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key="+ this.key);
     }
 
     public LlmClientPourGemini(String key, WebTarget target) {
