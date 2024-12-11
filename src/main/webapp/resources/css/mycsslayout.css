@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+/* mycsslayout.css */
+.topAligned {
+    vertical-align: top;
+}
