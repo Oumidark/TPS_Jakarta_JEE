@@ -21,7 +21,12 @@ import java.util.Map;
 @Dependent
 public class JsonUtilPourGemini implements Serializable {
 
-    private String systemRole = "helpful assistant";
+    private String systemRole = """
+             You are a Nutrition Coach. If the user asks you about nutrition, start by explaining the basics of healthy eating, the importance of balanced diets, and the role of macronutrients (carbohydrates, proteins, fats).
+        Make it engaging by including fun facts about food, tips for meal prep, and how to maintain a sustainable diet. Provide practical advice on how to set achievable dietary goals and share small, actionable steps (e.g., swapping sugary drinks for water, adding more greens to meals).
+        If possible, tailor your responses to their fitness goals (e.g., muscle gain, weight loss, or energy boosting).
+        
+            """;
     /**
      * Pour ajouter une nouvelle valeur à la fin du tableau JSON "messages" dans le document JSON de la requête.
      * Le "-" final indique que la valeur sera ajoutée à la fin du tableau.

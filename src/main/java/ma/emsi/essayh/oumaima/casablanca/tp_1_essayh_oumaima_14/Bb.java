@@ -192,7 +192,14 @@ public class Bb implements Serializable {
                 """;
         listeSystemRoles.add(new SelectItem(role, "Guide touristique"));
         // Présélectionne le premier rôle de la liste.
-                this.systemRole = (String) listeSystemRoles.get(0).getValue();
+        //la partie bonus
+        listeSystemRoles.add(new SelectItem(role, "Nutrition Coach"));
+        role = """
+        You are a Nutrition Coach. If the user asks you about nutrition, start by explaining the basics of healthy eating, the importance of balanced diets, and the role of macronutrients (carbohydrates, proteins, fats).
+        Make it engaging by including fun facts about food, tips for meal prep, and how to maintain a sustainable diet. Provide practical advice on how to set achievable dietary goals and share small, actionable steps (e.g., swapping sugary drinks for water, adding more greens to meals).
+        If possible, tailor your responses to their fitness goals (e.g., muscle gain, weight loss, or energy boosting).
+        """;
+        this.systemRole = (String) listeSystemRoles.get(0).getValue();
         return listeSystemRoles;
     }
 }
