@@ -10,19 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0a239f8-83bd-4350-b269-4a9e038a29a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ma/emsi/essayh/oumaima/casablanca/tp2essayhoumaima14partie2/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ma/emsi/essayh/oumaima/casablanca/tp2essayhoumaima14partie2/llm/LlmClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ma/emsi/essayh/oumaima/casablanca/tp2essayhoumaima14partie2/llm/LlmClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +50,7 @@
     "Payara Server.Payara 6.21.0.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "tp2-partie-2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Oumaima/Downloads/TP2-Essayh-Oumaima-14-Partie-2/src/main/webapp",
     "node.js.detected.package.eslint": "true",
@@ -151,7 +139,7 @@
       <option name="presentableId" value="Default" />
       <updated>1734199364101</updated>
       <workItem from="1734199365183" duration="818000" />
-      <workItem from="1734200291351" duration="2790000" />
+      <workItem from="1734200291351" duration="3028000" />
     </task>
     <servers />
   </component>
