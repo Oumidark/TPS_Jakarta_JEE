@@ -37,6 +37,8 @@ import java.util.*;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lombok.Builder;
+import lombok.Data;
 
 
 public class Test6 {
