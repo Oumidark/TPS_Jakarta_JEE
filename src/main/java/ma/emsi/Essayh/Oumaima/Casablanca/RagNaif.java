@@ -1,12 +1,32 @@
 package ma.emsi.Essayh.Oumaima.Casablanca;
 
+import dev.langchain4j.data.document.Document;
+import dev.langchain4j.data.document.DocumentParser;
+import dev.langchain4j.data.document.DocumentSplitter;
+import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
+import dev.langchain4j.data.document.parser.apache.tika.ApacheTikaDocumentParser;
+import dev.langchain4j.data.document.splitter.DocumentSplitters;
+import dev.langchain4j.data.embedding.Embedding;
+import dev.langchain4j.data.segment.TextSegment;
+import dev.langchain4j.memory.ChatMemory;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.embedding.EmbeddingModel;
+import dev.langchain4j.model.embedding.onnx.allminilml6v2.AllMiniLmL6V2EmbeddingModel;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
+import dev.langchain4j.model.output.Response;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
+import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
+import dev.langchain4j.service.AiServices;
+import dev.langchain4j.store.embedding.EmbeddingStore;
+import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
+import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class RagNaif {
     public static void main(String[] args) {
@@ -25,5 +45,47 @@ public class RagNaif {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e); // ou un autre traitement du problème...
         }
+
+        DocumentParser parser = new ApacheTikaDocumentParser();
+
+        Document document = FileSystemDocumentLoader.loadDocument(pathRessource, parser);
+
+        DocumentSplitter documentSplitter = DocumentSplitters.recursive(200, 10);
+
+        //List<TextSegment> chunks = documentSplitter.split(document);
+
+        EmbeddingModel embeddingModel = new AllMiniLmL6V2EmbeddingModel();
+
+        //Response<List<Embedding>> embeddings = embeddingModel.embedAll(chunks);
+
+        EmbeddingStore embeddingStore = new InMemoryEmbeddingStore();
+
+        EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
+                .embeddingStore(embeddingStore)
+                .embeddingModel(embeddingModel)
+                .documentSplitter(documentSplitter)
+                .build();
+
+        ingestor.ingest(document);
+
+
+        ContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
+                .embeddingModel(embeddingModel)
+                .embeddingStore(embeddingStore)
+                .minScore(0.5)
+                .maxResults(2)
+                .build();
+
+        //ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(10); //n'est pas utilisé
+
+        Assistant assistant = AiServices.builder(Assistant.class)
+                .chatLanguageModel(model)
+                .contentRetriever(contentRetriever)
+                .build();
+
+        String question = "C'est quoi le Machine learning? Repondez en français";
+
+        System.out.println(assistant.chat(question));
+
     }
 }
